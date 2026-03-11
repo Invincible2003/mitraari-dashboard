@@ -3,6 +3,8 @@
 Country Demographics & Trend Prediction System
 
 **Made by Aryan Pandey**
+Live Demo:
+https://mitraari-dashboard.vercel.app
 
 ## Features
 - 🌍 Global Population Map
