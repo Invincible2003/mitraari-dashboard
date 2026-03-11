@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 
 import StatsCards from "./components/StatsCards";
 import WorldMap from "./components/WorldMap";
@@ -11,6 +12,15 @@ import TopCountriesChart from "./components/TopCountriesChart";
 import CountryRanking from "./components/CountryRanking";
 
 function App() {
+
+  const navStyle = {
+    margin: "10px",
+    padding: "10px 18px",
+    background: "#222",
+    borderRadius: "6px",
+    textDecoration: "none",
+    color: "white"
+  };
 
   return (
 
@@ -25,71 +35,62 @@ function App() {
       }}
     >
 
-      <h1 style={{ fontSize: "42px" }}>
-        MitraAri Global Analytics Dashboard 🌍
-      </h1>
+      <h1>MitraAri Global Analytics Dashboard 🌍</h1>
 
-      <p style={{ marginBottom: "40px" }}>
-        Country Demographics & Trend Prediction System
-      </p>
-      <p style={{color:"#aaa", marginBottom:"30px"}}>
-  MADE BY ARYAN PANDEY
-</p>
+      <p>Country Demographics & Trend Prediction System</p>
 
-      {/* GLOBAL STATS */}
+      <p style={{color:"#aaa"}}>MADE BY ARYAN PANDEY</p>
 
-      <StatsCards />
+      {/* Navigation */}
 
-      <hr style={{ margin: "50px 0" }} />
+      <div style={{margin:"30px"}}>
 
-      {/* GLOBAL MAP */}
+        <Link style={navStyle} to="/">Dashboard</Link>
+        <Link style={navStyle} to="/map">Global Map</Link>
+        <Link style={navStyle} to="/analytics">Population Analytics</Link>
+        <Link style={navStyle} to="/intelligence">Country Intelligence</Link>
+        <Link style={navStyle} to="/comparison">Country Comparison</Link>
+        <Link style={navStyle} to="/rankings">Global Rankings</Link>
 
-      <h2>🌍 Global Population Map</h2>
+      </div>
 
-      <WorldMap />
 
-      <hr style={{ margin: "50px 0" }} />
+      {/* Routes */}
 
-      {/* POPULATION ANALYTICS */}
+      <Routes>
 
-      <h2>📊 Population Analytics</h2>
+        <Route path="/" element={<StatsCards />} />
 
-      <PopulationChart />
+        <Route path="/map" element={<WorldMap />} />
 
-      <PredictionChart />
+        <Route path="/analytics" element={
+          <>
+            <PopulationChart/>
+            <PredictionChart/>
+          </>
+        }/>
 
-      <hr style={{ margin: "50px 0" }} />
+        <Route path="/intelligence" element={
+          <>
+            <CountrySearch/>
+            <GDPChart/>
+          </>
+        }/>
 
-      {/* COUNTRY INTELLIGENCE */}
+        <Route path="/comparison" element={<CountryComparison/>} />
 
-      <h2>🔎 Country Intelligence</h2>
+        <Route path="/rankings" element={
+          <>
+            <TopCountriesChart/>
+            <CountryRanking/>
+          </>
+        }/>
 
-      <CountrySearch />
-
-      <GDPChart />
-
-      <hr style={{ margin: "50px 0" }} />
-
-      {/* COUNTRY COMPARISON */}
-
-      <h2>🌎 Country Comparison</h2>
-
-      <CountryComparison />
-
-      <hr style={{ margin: "50px 0" }} />
-
-      {/* GLOBAL RANKINGS */}
-
-      <h2>🏆 Global Population Rankings</h2>
-
-      <TopCountriesChart />
-
-      <CountryRanking />
+      </Routes>
 
     </div>
 
   );
-
 }
 
 export default App;
