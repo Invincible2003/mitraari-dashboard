@@ -113,8 +113,6 @@ mitraari-dashboard
 * Population Visualization
 * Ranking Dashboard
 
-*(Screenshots can be added here)*
-
 ---
 
 # 🚀 Installation & Setup
